@@ -1,0 +1,10 @@
+SOLR-708: CoreAdminHandler unload, reload, alias impl[https://issues.apache.org/jira/browse/SOLR-708]
+@@ -505,6 +505,8 @@
+ 
+   /** Persists the cores config file in a user provided file. */
+   public void persistFile(File file) {
++    log.info("Persisting cores config to " + (file==null ? configFile : file));
++
+     File tmpFile = null;
+     try {
+       // write in temp first

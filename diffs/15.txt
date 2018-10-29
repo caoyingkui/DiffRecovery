@@ -1,0 +1,10 @@
+no need for 'createMultiCore' to be public.  This is only useful for a subclass to extend
+@@ -393,7 +393,7 @@
+    * Creates a MultiCoreHandler for this MultiCore.
+    * @return a MultiCoreHandler
+    */
+-  public MultiCoreHandler createMultiCoreHandler() {
++  protected MultiCoreHandler createMultiCoreHandler() {
+     return new MultiCoreHandler() {
+       @Override
+       public MultiCore getMultiCore() {

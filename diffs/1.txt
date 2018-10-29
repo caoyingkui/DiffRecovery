@@ -1,0 +1,10 @@
+mark a core having multiple names as experimental
+@@ -346,7 +346,7 @@
+     return lst;
+   }
+ 
+-  /**
++  /** This method is currently experimental.
+    * @return a Collection of the names that a specific core is mapped to.
+    */
+   public Collection<String> getCoreNames(SolrCore core) {

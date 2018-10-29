@@ -1,0 +1,9 @@
+fix malformed javadoc, and add an @see for close() to getAdminCore since caller needs to be aware of it
+@@ -457,6 +457,7 @@
+   /**
+    * Ensures there is a valid core to handle MultiCore admin taks and
+    * increase its refcount.
++   * @see SolrCore#close() 
+    * @return the acquired admin core, null if no core is available
+    */               
+   public SolrCore getAdminCore() {

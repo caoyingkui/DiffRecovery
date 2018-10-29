@@ -1,0 +1,22 @@
+SOLR-720 -- Write container properties before <cores> element rather than after it.[https://issues.apache.org/jira/browse/SOLR-720]
+@@ -585,15 +585,16 @@
+       writer.write("false'");
+     }
+     writer.write(">\n");
+-    writer.write("<cores adminPath='");
+-    XML.escapeAttributeValue(adminPath, writer);
+-    writer.write('\'');
+-    writer.write(">\n");
+ 
+     if (containerProperties != null && !containerProperties.isEmpty())  {
+       writeProperties(writer, containerProperties);
+     }
+ 
++    writer.write("<cores adminPath='");
++    XML.escapeAttributeValue(adminPath, writer);
++    writer.write('\'');
++    writer.write(">\n");
++
+     Map<SolrCore, LinkedList<String>> aliases = new HashMap<SolrCore,LinkedList<String>>();
+ 
+     synchronized(cores) {

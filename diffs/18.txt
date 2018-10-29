@@ -1,0 +1,23 @@
+SOLR-350 -- removed static access for SolrMultiCore.  Also adding a new constructor to MultiCore[https://issues.apache.org/jira/browse/SOLR-350]
+@@ -63,6 +63,21 @@
+   protected java.lang.ref.WeakReference<SolrCore> adminCore = null;
+   
+   public MultiCore() {
++    
++  }
++
++  /**
++   * Initalize MultiCore directly from the constructor
++   * 
++   * @param dir
++   * @param configFile
++   * @throws ParserConfigurationException
++   * @throws IOException
++   * @throws SAXException
++   */
++  public MultiCore(String dir, File configFile ) throws ParserConfigurationException, IOException, SAXException 
++  {
++    this.load(dir, configFile);
+   }
+   
+   //-------------------------------------------------------------------

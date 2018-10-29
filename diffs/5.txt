@@ -1,0 +1,10 @@
+SOLR-714 -- CoreContainer.Load uses incorrect loop variable 'i' instead of 'a'[https://issues.apache.org/jira/browse/SOLR-714]
+@@ -202,7 +202,7 @@
+ 
+           for (int a=1; a<aliases.size(); a++) {
+             core.open();
+-            register(aliases.get(i), core, false);
++            register(aliases.get(a), core, false);
+           }
+ 
+           register(name, core, false);

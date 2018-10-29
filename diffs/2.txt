@@ -1,0 +1,20 @@
+SOLR-722: CoreContainer.reload should make core aliases point to reloaded core[https://issues.apache.org/jira/browse/SOLR-722]
+@@ -381,7 +381,17 @@
+     if (core == null)
+       throw new SolrException( SolrException.ErrorCode.BAD_REQUEST, "No such core: " + name );
+ 
+-    register(name, create(core.getCoreDescriptor()), false);
++    SolrCore newCore = create(core.getCoreDescriptor());
++
++    // point all aliases to the reloaded core
++    for (String alias : getCoreNames(core)) {
++      if (!name.equals(alias)) {
++        newCore.open();
++        register(alias, newCore, false);
++      }
++    }
++
++    register(name, newCore, false);
+   }
+     
+   
